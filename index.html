@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>مشروع بر الوالدين | Abdulaty Adel</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
+body{
+  margin:0;
+  font-family:'Cairo',sans-serif;
+  background:#000;
+  color:#e0e0e0;
+  scroll-behavior:smooth;
+}
+
+/* ===== شاشة البداية ===== */
+#intro-screen{
+  position:fixed;
+  top:0;left:0;width:100%;height:100%;
+  background:#000;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+#intro-screen img{
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  border:3px solid #00ffd5;
+  box-shadow:0 0 25px #00ffd5;
+  margin-bottom:15px;
+}
+#intro-screen h1{
+  font-size:3em;
+  color:#00ffd5;
+  margin:0;
+  text-shadow:0 0 15px #00ffd5,0 0 25px #00ffd5;
+}
+#intro-screen h2{
+  font-size:2em;
+  color:#ffd700;
+  margin:10px 0 0 0;
+  text-shadow:0 0 10px #ffd700,0 0 20px #ffd700;
+}
+#intro-screen button{
+  margin-top:30px;
+  padding:12px 25px;
+  font-size:18px;
+  font-weight:700;
+  color:#000;
+  background:#00ffd5;
+  border:none;
+  border-radius:12px;
+  cursor:pointer;
+  box-shadow:0 0 20px #00ffd5;
+}
+#intro-screen button:hover{
+  background:#ffd700;
+  box-shadow:0 0 20px #ffd700;
+}
+
+/* ===== الهيدر ===== */
+header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:15px 25px;
+  background:linear-gradient(90deg,#000,#111,#000);
+  border-bottom:2px solid #333;
+}
+header img{
+  width:80px;
+  filter:none; /* عادي بدون أي تأثير ضوئي */
+}
+.center-head{
+  text-align:center;
+}
+.center-head h1{
+  margin:4px 0;
+  font-size:26px;
+  color:#00ffd5;
+}
+.center-head div{
+  font-size:16px;
+  opacity:.9;
+}
+.center-head strong{
+  display:block;
+  margin-top:6px;
+  font-size:17px;
+  color:#ffd700;
+}
+
+/* ===== التنقل ===== */
+nav{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(0,0,0,.95);
+  padding:10px;
+  text-align:center;
+  box-shadow:0 10px 30px #000;
+}
+nav a{
+  color:#cfcfcf;
+  margin:0 15px;
+  text-decoration:none;
+  font-weight:700;
+  font-size:16px;
+}
+nav a:hover{
+  color:#00ffd5;
+}
+
+/* ===== الأقسام ===== */
+section{
+  max-width:900px;
+  margin:50px auto;
+  padding:25px;
+  background:linear-gradient(145deg,#0b0b0b,#151515);
+  border-radius:15px;
+  box-shadow:0 0 30px rgba(0,255,213,.15);
+  border:1px solid #222;
+  transform:translateY(40px);
+  opacity:0;
+  transition:.8s;
+}
+section.show{
+  transform:translateY(0);
+  opacity:1;
+}
+h2{
+  color:#ffd700;
+  border-right:5px solid #00ffd5;
+  padding-right:12px;
+  margin-bottom:12px;
+}
+p{
+  font-size:17px;
+  line-height:1.9;
+}
+
+/* ===== التقييم ===== */
+.rating{
+  display:flex;
+  flex-direction:row-reverse;
+  justify-content:center;
+  margin:15px 0;
+}
+.rating input{
+  display:none;
+}
+.rating label{
+  font-size:30px;
+  color:#444;
+  padding:0 5px;
+  cursor:pointer;
+}
+.rating input:checked ~ label,
+.rating label:hover,
+.rating label:hover ~ label{
+  color:#ffd700;
+}
+
+/* ===== التعليقات ===== */
+.comment-box{
+  max-width:700px;
+  margin:20px auto;
+  display:flex;
+  flex-direction:column;
+}
+.comment-box input, .comment-box textarea{
+  margin:5px 0;
+  padding:10px;
+  border-radius:8px;
+  border:none;
+  font-size:16px;
+}
+.comment-box button{
+  width:150px;
+  padding:10px;
+  font-size:16px;
+  font-weight:700;
+  border-radius:8px;
+  border:none;
+  background:#00ffd5;
+  color:#000;
+  cursor:pointer;
+}
+.comment-box button:hover{
+  background:#ffd700;
+}
+
+/* ===== الفوتر ===== */
+footer{
+  text-align:center;
+  padding:25px;
+  margin-top:60px;
+  background:#000;
+  color:#888;
+  border-top:2px solid #222;
+}
+footer span{
+  color:#00ffd5;
+  font-weight:700;
+}
+.visitor-count{
+  margin-top:10px;
+  font-size:16px;
+  color:#00ffd5;
+  text-align:center;
+}
+</style>
+</head>
+<body>
+
+<!-- شاشة البداية -->
+<div id="intro-screen">
+  <img src="me.png">
+  <h1>Computer Science</h1>
+  <h2>Engineer Abdel-Aati</h2>
+  <button onclick="startProject()">ابدأ المشروع</button>
+</div>
+
+<header>
+  <img src="bayan.png">
+  <div class="center-head">
+    <h1>بسم الله الرحمن الرحيم</h1>
+    <div>Al Bayan University</div>
+    <div>Computer Science – Level 2</div>
+    <strong>Abdulaty Adel Abdulaty</strong>
+  </div>
+  <img src="bayan.png">
+</header>
+
+<nav>
+  <a href="#intro">المقدمة</a>
+  <a href="#parents">الوالدان</a>
+  <a href="#mother">الأم</a>
+  <a href="#father">الأب</a>
+</nav>
+
+<section id="intro">
+  <h2>مقدمة</h2>
+  <p>
+    هذا المشروع يسلّط الضوء على مكانة الوالدين في حياة الإنسان،
+    ويهدف إلى نشر الوعي بأهمية برّهم والإحسان إليهم
+    لما لذلك من أثر عظيم في الدنيا والآخرة.
+  </p>
+</section>
+
+<section id="parents">
+  <h2>الوالدان</h2>
+  <p>
+    الوالدان هما أصل الوجود، والتعب البذلوه ما بتعوّض.
+    الله سبحانه وتعالى قرن عبادته بالإحسان إليهما،
+    وده دليل واضح على عظم مكانتهما.
+  </p>
+</section>
+
+<section id="mother">
+  <h2>الأم</h2>
+  <p>
+    الأم هي الرحمة، الصبر، والتضحية.
+    تسهر وتتعب وتضحي بدون انتظار مقابل.
+    برّ الأم من أعظم أبواب الخير والنجاح.
+  </p>
+  <p>
+    قال النبي ﷺ:  
+    «الزمهما فإن الجنة تحت أقدامهما».
+  </p>
+</section>
+
+<section id="father">
+  <h2>الأب</h2>
+  <p>
+    الأب هو السند، القوة، والأمان.
+    يعمل ويتعب من أجل راحة الأسرة،
+    واحترامه وبرّه سبب للاستقرار والتوازن النفسي.
+  </p>
+</section>
+
+<!-- قسم التقييم -->
+<section id="rating">
+  <h2>تقييم الصفحة</h2>
+  <div class="rating">
+    <input type="radio" name="star" id="star10" value="10"><label for="star10">★</label>
+    <input type="radio" name="star" id="star9" value="9"><label for="star9">★</label>
+    <input type="radio" name="star" id="star8" value="8"><label for="star8">★</label>
+    <input type="radio" name="star" id="star7" value="7"><label for="star7">★</label>
+    <input type="radio" name="star" id="star6" value="6"><label for="star6">★</label>
+    <input type="radio" name="star" id="star5" value="5"><label for="star5">★</label>
+    <input type="radio" name="star" id="star4" value="4"><label for="star4">★</label>
+    <input type="radio" name="star" id="star3" value="3"><label for="star3">★</label>
+    <input type="radio" name="star" id="star2" value="2"><label for="star2">★</label>
+    <input type="radio" name="star" id="star1" value="1"><label for="star1">★</label>
+  </div>
+</section>
+
+<!-- قسم التعليقات -->
+<section id="comments">
+  <h2>التعليقات</h2>
+  <div class="comment-box">
+    <input type="text" id="name" placeholder="اسمك">
+    <textarea id="comment" placeholder="اكتب تعليقك هنا"></textarea>
+    <button onclick="addComment()">أضف تعليق</button>
+  </div>
+  <div id="comments-list"></div>
+</section>
+
+<div class="visitor-count" id="visitor-count">عدد الزوار: 0</div>
+
+<footer>
+  © 2025 — <span>Abdulaty Adel Abdulaty</span><br>
+  <span>Al Bayan University</span> — صفحة توعوية عن برّ الوالدين
+</footer>
+
+<script>
+const sections = document.querySelectorAll("section");
+window.addEventListener("scroll",()=>{
+  sections.forEach(sec=>{
+    if(sec.getBoundingClientRect().top < window.innerHeight - 100){
+      sec.classList.add("show");
+    }
+  });
+});
+
+// شاشة البداية
+function startProject(){
+  document.getElementById("intro-screen").style.display="none";
+}
+
+// التعليقات والتقييم
+function addComment(){
+  const name = document.getElementById("name").value.trim();
+  const comment = document.getElementById("comment").value.trim();
+  if(name && comment){
+    const div = document.createElement("div");
+    div.style.border="1px solid #00ffd5";
+    div.style.margin="8px 0";
+    div.style.padding="8px";
+    div.innerHTML = `<strong>${name}</strong>: ${comment}`;
+    document.getElementById("comments-list").appendChild(div);
+    document.getElementById("name").value="";
+    document.getElementById("comment").value="";
+  }
+}
+
+// عداد الزوار (تخزين مؤقت على المتصفح)
+let visitors = localStorage.getItem('visitors') || 0;
+visitors++;
+localStorage.setItem('visitors', visitors);
+document.getElementById('visitor-count').innerText = `عدد الزوار: ${visitors}`;
+</script>
+
+</body>
+</html>
